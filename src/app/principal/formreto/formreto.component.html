@@ -1,0 +1,38 @@
+<section class="container-sm">
+  <form [formGroup]="registroForm" (ngSubmit)="onSubmit()">
+    <section class="form-group m-3">
+      <label for="nombres">Nombre:</label>
+      <input type="text" class="form-control" formControlName="nombres" />
+      <section *ngIf="nombres?.invalid && (nombres?.dirty || nombres?.touched)">
+        <section *ngIf="nombres?.invalid" class="alert alert-danger">
+          Debe tener como minimo 10 caracteres
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="email">Email:</label>
+      <input type="email" class="form-control" formControlName="email" />
+      <section *ngIf="email?.invalid && (email?.dirty || email?.touched)">
+        <section *ngIf="email?.invalid" class="alert alert-danger">
+          El mail no es valido
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <label for="mensaje">Mensaje</label>
+      <input class="form-control" formControlName="mensaje" rows="5" />
+      <section *ngIf="mensaje?.invalid && (mensaje?.dirty || mensaje?.touched)">
+        <section *ngIf="mensaje?.invalid" class="alert alert-danger">
+          El mensaje no puede quedar vacio
+        </section>
+      </section>
+    </section>
+
+    <section class="form-group m-3">
+      <input type="submit" value="Confirmar" class="btn btn-primary" />
+    </section>
+    <p *ngIf="mostrarResultado">Todos los datos son validos</p>
+  </form>
+</section>
